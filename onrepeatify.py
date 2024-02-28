@@ -9,9 +9,17 @@ username = os.environ.get('SPOTIFY_USER_NAME')
 on_repeat_playlist_id = os.environ.get('SPOTIFY_ON_REPEAT_PLAYLIST_ID')
 favorites_playlist_id = os.environ.get('SPOTIFY_FAVORITES_PLAYLIST_ID')
 
+"""
+We need pagination to get all the tracks from a playlist, since the API only returns 100 tracks at a time.
+"""
 def get_playlist_tracks(sp, playlist_id):
     results = sp.playlist_tracks(playlist_id)
-    return [item['track']['id'] for item in results['items']]
+    track_ids = [item['track']['id'] for item in results['items']]
+
+    while results['next']:
+        results = sp.next(results)
+        track_ids.extend([item['track']['id'] for item in results['items']])
+    return track_ids
 
 def get_track_name_based_on_id(sp, track_id):
     track_info = sp.track(track_id)
