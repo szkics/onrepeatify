@@ -1,0 +1,21 @@
+<!-- templates/playlist.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Playlists</title>
+</head>
+<body>
+
+    <form action="{{ url_for('copy') }}" method="post">
+        <label for="source_playlist_id">Source Playlist ID:</label>
+        <input type="text" id="source_playlist_id" name="source_playlist_id" required>
+
+        <label for="destination_playlist_id">Destination Playlist ID:</label>
+        <input type="text" id="destination_playlist_id" name="destination_playlist_id" required>
+
+        <button type="submit">Copy Tracks</button>
+    </form>
+</body>
+</html>

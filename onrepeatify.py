@@ -5,7 +5,6 @@ from spotipy.oauth2 import SpotifyOAuth
 # Access environment variables
 client_id = os.environ.get('SPOTIFY_CLIENT_ID')
 client_secret = os.environ.get('SPOTIFY_CLIENT_SECRET')
-username = os.environ.get('SPOTIFY_USER_NAME')
 on_repeat_playlist_id = os.environ.get('SPOTIFY_ON_REPEAT_PLAYLIST_ID')
 favorites_playlist_id = os.environ.get('SPOTIFY_FAVORITES_PLAYLIST_ID')
 
